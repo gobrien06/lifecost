@@ -9,19 +9,19 @@ class CostCalculator extends Component{
   constructor(){
     super();
     this.state={
-      city:'Enter Your City',
       rent:'',
       tax:'',
+      animate:'hidden',
     }
   }
 
   getData(){
-    const url = '/'+this.state.city+'/all/';
+    const url = '/'+this.props.city+'/all/';
     axios.get(process.env.REACT_APP_BASE_URL + url)
     .then((response)=>{
       this.setState({
-        tax: response.data[this.state.city].tax,
-        rent:response.data[this.state.city].rent,
+        tax: response.tax,
+        rent:response.rent,
       })
     },
     (error)=>{
@@ -35,6 +35,9 @@ class CostCalculator extends Component{
   }
 
     handleKeyPress=(e)=>{
+      this.setState({
+        animate:'hidden',
+      })
     if (e.key === 'Enter') {
       this.handleChange(e);
       console.log("pressed");
@@ -45,8 +48,10 @@ class CostCalculator extends Component{
     handleChange = (e) => {
       e.preventDefault();
       console.log(e.target.value);
+      this.props.change(e.target.value);
       this.setState({
         city:e.target.value,
+        animate:"visible",
       });
     };
 
@@ -73,9 +78,11 @@ class CostCalculator extends Component{
       }
     };
 
-    const styles = {
-      color:'#2F2F2F',
-     borderColor:'#2F2F2F',
+
+    const paraStyles={
+      margin:'0',
+      padding:'0',
+      fontWeight:'300',
     }
 
 
@@ -85,36 +92,41 @@ class CostCalculator extends Component{
     variants={container}
     initial="hidden"
     animate="visible"
+    justify="center"
     >
     <Card className="costs">
     <CardContent>
     <Typography variant="h4" color="primary">
-  {this.state.city}
+    <p style={paraStyles}>
+    {this.props.city}
+    </p>
     </Typography>
     <br/>
     <CardContent className="entry">
     <TextField id="filled-basic"   InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter City" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
     </CardContent>
     <br/>
-    <motion.li variants={item}>
+    <motion.li variants={item}
+    animate={this.state.animate}  >
     <Typography variant="h5">
     Rent:{'\t\t\t\t'}
     {this.state.rent}
     </Typography>
 
     </motion.li>
-    <motion.li variants={item}>
+    <motion.li variants={item}
+    animate={this.state.animate}>
     <Typography variant="h5">
     Sales Tax:{'\t\t\t\t'}
     {this.state.tax}
     </Typography>
     </motion.li>
-  <motion.li variants={item}>
+  <motion.li variants={item}
+  animate={this.state.animate}>
   <Typography variant="h5">
     Income Tax:
   </Typography>
   </motion.li>
-  <hr style={styles}/>
   </CardContent>
     </Card>
     </motion.ul>

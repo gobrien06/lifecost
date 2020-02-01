@@ -5,7 +5,7 @@ import './MakeIt.css';
 
 function MakeIt(){
   return(
-    <Grid container className="about" position="relative">
+    <Grid container className="makeit" position="relative">
       <Grid item xs={8}>
         <Typography variant="h2" color="primary">
         Don't break it, make it.

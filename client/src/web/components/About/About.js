@@ -24,7 +24,7 @@ const Cone = (props) => {
   <mesh
   {...props}
   ref={mesh}>
-  <coneBufferGeometry attach="geometry" args={[2,5.5,5]} />
+  <coneBufferGeometry attach="geometry" args={[2,4.5,5]} />
   <meshStandardMaterial attach="material" color={'#3f51b5'} />
   </mesh>
   )
@@ -35,7 +35,7 @@ const Cone = (props) => {
 function About(){
     return(
       <Grid container className="about">
-        <Grid item xs={6}>
+        <Grid item xs={8}>
         <Typography variant="h2" color="primary"> What we do. </Typography>
             <ul>We make moving easy.
               <li> -  Find out your estimated cost of living</li>
@@ -44,12 +44,14 @@ function About(){
             </ul>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Canvas className = "treeCanvas">
           <ambientLight />
           <pointLight position={[15, 10, 5]} />
-          <Cone position={[0,1,0]}/>
-          <Base position={[0,-2,0]}/>
+          <Cone position={[0,1.5,0]}/>
+          <Cone position={[0,1.3,0]}/>
+          <Cone position={[0,0.8,0]}/>
+          <Base position={[0,-1.6,0]}/>
           </Canvas>
         </Grid>
 

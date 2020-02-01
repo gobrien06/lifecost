@@ -2,33 +2,37 @@ import React, {Component}  from 'react';
 import {Grid, TextField, Typography} from '@material-ui/core';
 import './Salary.css';
 import axios from 'axios';
+import {motion} from 'framer-motion';
 
 export default class Salary extends Component{
   constructor(){
     super();
     this.state={
       career:'Enter your career',
-      senior:'',
-      junior:'',
-      average:'',
+      senior:'No data found',
+      junior:'No data found',
+      average:'No data found',
+      animate:'hidden',
     }
   }
 
   handleKeyPress=(e)=>{
+    this.setState({
+      animate:'hidden',
+    })
     if (e.key === 'Enter'){
       this.handleChange(e);
-      console.log("pressed");
     }
   }
 
   getJob(){
-    const url = this.state.career + '/careers/';
+    const url = '/'+this.props.city+'/' + '/'+this.state.career +'/' + '/all/';
     axios.get(process.env.REACT_APP_BASE_URL + url)
     .then((response)=>{
       this.setState({
-        senior:response.data[0],
-        junior:response.data[1],
-        average:response.data[2],
+        senior:response.senior_salary,
+        junior:response.junior_salary,
+        average:response.mid_salary,
       })
     },
     (error)=>{
@@ -42,19 +46,68 @@ export default class Salary extends Component{
     console.log(e.target.value);
     this.setState({
       career: e.target.value,
+      animate:"visible",
     });
     this.getJob();
   }
 
 
   render(){
+      const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            delay: 0.3,
+            when: "beforeChildren",
+            staggerChildren: 0.1
+          }
+        }
+      };
+
+      const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+          y: 0,
+          opacity: 1
+        }
+      };
+
       return(
-        <div>
-        <Typography variant="h5" color="white">
-        Do your job well.
+        <div className="salary">
+        <Typography variant="h2" color="primary" align="center">
+        Anyjob, anywhere.
         </Typography>
+        <br/>
+        <br/>
         <Grid container justify="center">
-        <TextField id="filled-basic"   InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+        <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+        </Grid>
+        <Grid container justify="center" className="bottom">
+        <br/><br/><br/><br/>
+        <motion.ul
+        className="container"
+        variants={container}
+        initial="hidden"
+        animate={this.state.animate}
+        >
+        <motion.li
+        variants={item}
+        >
+        Junior:{'\t'}{this.state.junior}
+        </motion.li>
+        <motion.li
+        variants={item}
+        >
+        Mid:{'\t'}{this.state.average}
+        </motion.li>
+        <motion.li
+        variants={item}
+        >
+        Senior:{'\t'}{this.state.senior}
+        </motion.li>
+        </motion.ul>
         </Grid>
         </div>
       )

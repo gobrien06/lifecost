@@ -1,25 +1,30 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import './App.css';
 import About from './web/components/About/About';
-import Salary from './web/components/Salary/Salary';
 import TopBar from './web/components/TopBar/TopBar';
+import Salary from './web/components/Salary/Salary';
 import CostCalculator from './web/components/CostCalculator/CostCalculator';
 import MakeIt from './web/components/MakeIt/MakeIt';
 import Opinion from './web/components/Opinion/Opinion';
 
 
 function App() {
+  const [city, setCity] = useState('Enter Your City');
+
   const styles={
-    width:'30%',
+    width:'15%',
     margin:'auto',
   }
+
   return (
     <Fragment>
     <TopBar />
-    <CostCalculator/>
+    <CostCalculator change={setCity} city = {city}/>
+    <br/>
     <hr style={styles}/>
     <About />
-    <Salary />
+    <hr style={styles}/>
+    <Salary city = {city}/>
     <hr style={styles}/>
     <MakeIt />
     <Opinion />

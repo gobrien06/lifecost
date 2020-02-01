@@ -2,14 +2,14 @@
   height:60vh;
   color:#FFF;
   margin:auto;
-  margin-top:10%;
+  padding:6%;
 }
 
 .inputbase{
-  background-color:#3f51b5;
-  font-family:Roboto;
-  font-size:2rem;
-
+  margin:5%;
 }
 
-
+.bottom{
+  margin-top:5%;
+  line-height:2rem;
+}
