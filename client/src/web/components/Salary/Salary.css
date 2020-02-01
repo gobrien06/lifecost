@@ -2,6 +2,7 @@
   background-color:#9B9696;
   height:60vh;
   padding:3%;
+  color:#484545;
 }
 
 .salaryHold{
@@ -17,6 +18,7 @@
 }
 
 #filled-basic{
+  margin:auto;
   flex:1;
 }
 

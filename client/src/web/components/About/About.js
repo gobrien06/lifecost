@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {Canvas, useFrame} from 'react-three-fiber';
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, withStyles} from '@material-ui/core';
 import './About.css';
 
 const Base = (props) => {
@@ -40,13 +40,11 @@ function About(){
       <Grid container className="about">
         <Grid item xs={7}>
         <Typography variant="h2" color="primary"> What we do. </Typography>
-        <Typography variant="h4">
             <ul>We make moving easy.
               <li> Find out your estimated cost of living</li>
               <li> Discover your monthly payments</li>
               <li> See what real residents think</li>
             </ul>
-            </Typography>
         </Grid>
 
         <Grid item xs={5}>
@@ -57,6 +55,7 @@ function About(){
           <Base position={[0,-2,0]}/>
           </Canvas>
         </Grid>
+
       </Grid>
     )
 }

@@ -11,7 +11,7 @@ class CostCalculator extends Component{
     this.state={
       city:'Enter Your City',
       rent:'',
-      nearbyCities:['Get started above'],
+      nearbyCities:['Enter city above to:', 'See nearby cities','See estimated rents and taxes','See real opinions'],
     }
     this.updateCity = this.updateCity.bind(this);
   }

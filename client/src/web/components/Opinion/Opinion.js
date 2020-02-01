@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Grid, Typography} from '@material-ui/core';
 import {PieChart, Pie} from 'recharts';
-import Particles from 'react-particles-js';
+
 
 import './Opinion.css';
 
@@ -33,10 +33,9 @@ function Opinion(){
     <Typography variant = "h2">
     Overall Opinion: {opinion}
     </Typography>
-
     </Grid>
     <Grid item xs={8}>
-    <PieChart width={1300} height={400} className="">
+    <PieChart width={1300} height={400}>
     <Pie data={data01} dataKey="value" nameKey="approve" cx="50%" cy="50%" outerRadius={140} fill="#8884d8" />
     <Pie data={data02} dataKey="value" nameKey="disapprove" cx="50%" cy="50%" innerRadius={120} outerRadius={140} fill="#82ca9d" label />
     </PieChart>

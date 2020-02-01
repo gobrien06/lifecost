@@ -9,9 +9,9 @@ export default class Salary extends Component{
     super();
     this.state={
       career:'Enter your career',
-      senior:'',
-      junior:'',
-      average:'',
+      senior:'...',
+      junior:'...',
+      average:'...',
     }
   }
 
@@ -50,7 +50,7 @@ export default class Salary extends Component{
   render(){
     return(
       <Box className="salary">
-      <TextField id="filled-basic" label="I am a:" variant="filled" onKeyPress={this.handleKeyPress} />
+      <TextField id="filled-basic" label="I am a:" variant="filled" onKeyPress={this.handleKeyPress}/>
       <List className="light">
       <ListItem className="salaryHold">
       <Typography variant="h4">

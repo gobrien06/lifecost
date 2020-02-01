@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, Box} from '@material-ui/core';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import './MakeIt.css';
 
@@ -13,6 +13,7 @@ function MakeIt(){
         <MonetizationOnIcon fontSize="large" className="rotating" color="primary"/>
       </Grid>
       <Grid item xs={4}>
+      <Box height={250}/>
       <Typography variant="h4" className="right">
         See your salary before you get the job.
       </Typography>

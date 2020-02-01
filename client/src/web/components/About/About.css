@@ -18,6 +18,10 @@ h1{
 }
 
 ul{
+  line-height:1.3em;
   color:#FFFF;
+  font-size:1.6rem;
+  font-weight:300;
+  letter-spacing: 0.04em;
 }
 
