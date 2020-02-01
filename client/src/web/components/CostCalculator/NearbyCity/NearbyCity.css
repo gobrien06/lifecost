@@ -1,4 +1,10 @@
 .nearby{
-  background-color:#C8C8C8;
-  color:#484545;
+  background-color:#202022;
+  color:#FFF;
+  border: 2px;
+}
+
+#filled-basic{
+  flex:1;
+  margin:auto;
 }

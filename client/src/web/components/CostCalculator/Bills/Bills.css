@@ -1,0 +1,22 @@
+.info{
+  margin:auto;
+  padding:1%;
+  font-size:1.5rem;
+  color:#3f51b5;
+}
+
+
+.nearby{
+  background-color:#2B2A2D;
+  color:#FFF;
+  width:50% !important;
+  margin:auto;
+}
+
+.container{
+    list-style-type: none;
+}
+
+li{
+  margin-top:2%;
+}

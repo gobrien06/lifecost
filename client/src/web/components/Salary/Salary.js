@@ -1,17 +1,16 @@
 import React, {Component}  from 'react';
-import {Box, TextField, List, ListItem, Typography} from '@material-ui/core';
+import {Grid, TextField, Typography} from '@material-ui/core';
 import './Salary.css';
 import axios from 'axios';
-
 
 export default class Salary extends Component{
   constructor(){
     super();
     this.state={
       career:'Enter your career',
-      senior:'...',
-      junior:'...',
-      average:'...',
+      senior:'',
+      junior:'',
+      average:'',
     }
   }
 
@@ -23,7 +22,7 @@ export default class Salary extends Component{
   }
 
   getJob(){
-    const url = '/careers/'+this.state.career;
+    const url = this.state.career + '/careers/';
     axios.get(process.env.REACT_APP_BASE_URL + url)
     .then((response)=>{
       this.setState({
@@ -47,37 +46,17 @@ export default class Salary extends Component{
     this.getJob();
   }
 
+
   render(){
-    return(
-      <Box className="salary">
-      <TextField id="filled-basic" label="I am a:" variant="filled" onKeyPress={this.handleKeyPress}/>
-      <List className="light">
-      <ListItem className="salaryHold">
-      <Typography variant="h4">
-      Junior
-      </Typography>
-      <div className="salaryval">
-      {this.state.junior}
-      </div>
-      </ListItem>
-      <ListItem  className="salaryHold">
-      <Typography variant="h4">
-      Average
-      </Typography>
-      <div className="salaryval">
-      {this.state.average}
-      </div>
-      </ListItem>
-      <ListItem  className="salaryHold">
-      <Typography variant="h4">
-      Senior
-      </Typography>
-      <div className="salaryval">
-      {this.state.senior}
-      </div>
-      </ListItem>
-      </List>
-      </Box>
-    )
+      return(
+        <div>
+        <Typography variant="h5" color="white">
+        Do your job well.
+        </Typography>
+        <Grid container justify="center">
+        <TextField id="filled-basic"   InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+        </Grid>
+        </div>
+      )
   }
 }

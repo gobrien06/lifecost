@@ -1,6 +1,4 @@
-import React from 'react';
-import theme from './web/materialTheme';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import React, {Fragment} from 'react';
 import './App.css';
 import About from './web/components/About/About';
 import Salary from './web/components/Salary/Salary';
@@ -11,15 +9,21 @@ import Opinion from './web/components/Opinion/Opinion';
 
 
 function App() {
+  const styles={
+    width:'30%',
+    margin:'auto',
+  }
   return (
-    <MuiThemeProvider theme={theme}>
+    <Fragment>
     <TopBar />
     <CostCalculator/>
+    <hr style={styles}/>
     <About />
     <Salary />
+    <hr style={styles}/>
     <MakeIt />
     <Opinion />
-    </MuiThemeProvider>
+    </Fragment>
   );
 }
 

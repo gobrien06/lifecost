@@ -1,8 +1,8 @@
 .about{
-  background-color: #484545;
+  background-color:#000;
   height:60vh;
   width:100%;
-  padding:3%;
+  padding:7%;
 }
 
 .treeCanvas{
@@ -23,5 +23,11 @@ ul{
   font-size:1.6rem;
   font-weight:300;
   letter-spacing: 0.04em;
+ list-style-type: none;
 }
 
+@media only screen and (max-width: 800px) {
+  ul{
+    font-size:1.3rem;
+  }
+}

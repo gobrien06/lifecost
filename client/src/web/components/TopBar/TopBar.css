@@ -1,7 +1,11 @@
 
 .icon{
   float:right;
-  margin-top:.05%;
+  margin-top:.08%;
+}
+
+.icon:active {
+  margin-top:0%;
 }
 
 .topbar{

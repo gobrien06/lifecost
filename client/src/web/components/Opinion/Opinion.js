@@ -35,10 +35,7 @@ function Opinion(){
     </Typography>
     </Grid>
     <Grid item xs={8}>
-    <PieChart width={1300} height={400}>
-    <Pie data={data01} dataKey="value" nameKey="approve" cx="50%" cy="50%" outerRadius={140} fill="#8884d8" />
-    <Pie data={data02} dataKey="value" nameKey="disapprove" cx="50%" cy="50%" innerRadius={120} outerRadius={140} fill="#82ca9d" label />
-    </PieChart>
+
     </Grid>
 
     </Grid>
@@ -46,5 +43,10 @@ function Opinion(){
 
 
 }
-
+/*
+<PieChart width={1300} height={400}>
+    <Pie data={data01} dataKey="value" nameKey="approve" cx="50%" cy="50%" outerRadius={140} fill="#8884d8" />
+    <Pie data={data02} dataKey="value" nameKey="disapprove" cx="50%" cy="50%" innerRadius={120} outerRadius={140} fill="#82ca9d" label />
+    </PieChart>
+    */
 export default Opinion;
