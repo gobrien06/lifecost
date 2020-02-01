@@ -1,0 +1,23 @@
+.salary{
+  background-color:#9B9696;
+  height:60vh;
+  padding:3%;
+}
+
+.salaryHold{
+  margin-top:2%;
+  background-color:#C8C8C8;
+}
+
+.salaryval{
+  margin:auto;
+  background-color:#9B9696;
+  padding:1%;
+  font-size:1.5rem;
+}
+
+#filled-basic{
+  flex:1;
+}
+
+
