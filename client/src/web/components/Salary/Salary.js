@@ -103,7 +103,7 @@ export default class Salary extends Component{
         return(
           <div className="salary">
           <Typography variant="h2" color="primary" align="center">
-          Anyjob, anywhere.
+          Any job, anywhere.
           </Typography>
           <br/>
           <br/>

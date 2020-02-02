@@ -5,7 +5,6 @@ import TopBar from './web/components/TopBar/TopBar';
 import Salary from './web/components/Salary/Salary';
 import CostCalculator from './web/components/CostCalculator/CostCalculator';
 import MakeIt from './web/components/MakeIt/MakeIt';
-import Opinion from './web/components/Opinion/Opinion';
 
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
     <hr style={styles}/>
     <Salary city = {city}/>
     <hr style={styles}/>
-    <MakeIt />
+    <MakeIt city={city}/>
     </Fragment>
   );
 }

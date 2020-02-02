@@ -2,14 +2,16 @@ import React from 'react';
 import {Grid, Typography, Box} from '@material-ui/core';
 import './MakeIt.css';
 import PieChart from './PieChart/PieChart';
+import {motion} from 'framer-motion';
 
-function MakeIt(){
+function MakeIt(props){
   return(
     <Grid container className="makeit" position="relative">
       <Grid item xs={8}>
         <Typography variant="h2" color="primary">
         Rise to the top.
         </Typography>
+        <PieChart city={props.city} className="chart"/>
       </Grid>
       <Grid item xs={4}>
       <Box height={250}/>

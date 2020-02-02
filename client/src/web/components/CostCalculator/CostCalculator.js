@@ -37,6 +37,7 @@ class CostCalculator extends Component{
   }
 
     handleKeyPress=(e)=>{
+      e.preventDefault();
       this.setState({
         animate:'hidden',
       })
