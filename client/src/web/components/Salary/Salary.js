@@ -16,6 +16,13 @@ export default class Salary extends Component{
     }
   }
 
+  componentWillReceiveProps(newProps){
+    if(this.props.city !== newProps.city){
+      this.setState({
+        animate:'hidden',
+      })
+    }
+  }
   handleKeyPress=(e)=>{
     this.setState({
       animate:'hidden',
@@ -26,12 +33,9 @@ export default class Salary extends Component{
   }
 
   getJob(){
-    if(!this.props.city){
+    if(this.props.city==="Where do you want to go?"){
       this.setState({
-        loading:false,
-        senior:"Please retry again",
-        junior:"Please retry again",
-        average:"Please retry again",
+        animate:'hidden',
       })
     }
     console.log('career for req'+this.props.career);

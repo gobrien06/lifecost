@@ -58,7 +58,7 @@ class CostCalculator extends Component{
       });
       (async () => {
         await this.props.changeProp(e.target.value);
-        this.getData()
+        this.getData();
       })();
     };
 
