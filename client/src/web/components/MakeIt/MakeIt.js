@@ -12,7 +12,7 @@ function MakeIt(props){
         </Typography>
         <br/>
         <br/>
-        <PieChart city={props.city} c/>
+        <PieChart city={props.city} career={props.career}/>
       </Grid>
       <Grid item xs={4}>
       <Box height={300}/>

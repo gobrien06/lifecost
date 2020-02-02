@@ -24,7 +24,7 @@ function Array_Sort_Numbers(inputarray){
 }
 
 function Array_Sum(t){
-   return t.reduce(function(a, b) { return a + b; }, 0); 
+   return t.reduce(function(a, b) { return a + b; }, 0);
 }
 
 function Array_Average(data) {
@@ -42,12 +42,12 @@ function Array_Stdev(tab){
    }
    return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
             return firstEl + nextEl;
-          })/tab.length));  
+          })/tab.length));
 }
 
 function loadFromJSON() {
-    
-    
+
+
     /*
    city = 'los angeles';
    job = 'software';
@@ -71,88 +71,90 @@ function loadFromJSON() {
                 senior_quant: job_result[5]
             };
             console.log(result);
-        }, result => { 
+        }, result => {
             console.log(result);
         });
-    }, result => { 
+    }, result => {
         console.log(city_result);
-    }); 
-    var career = require('./salary3.json');
-    
-    
+    });
+    */
+
+    var career = require('./salary4.json');
+    /*
+
     var tax = require('./tax.json');
-    
+
     tax = tax[0]['tax'];
-    
-    
+
+
     for (let i = 0; i < tax.length; i++) {
-        
-        city = tax[i]['city'];      
+
+        city = tax[i]['city'];
         sales_tax = tax[i]['rate'];
-        
+
         knex('city_data').insert({
             city: city,
             sales_tax: sales_tax
         }).then(result => {console.log('success')}, result => {console.log(result)});
     }
-    */
-    
+
+
     var apartment = require('./apartment.json');
     for (let i = 0; i < apartment.length; i++) {
         city = apartment[i]['city'][0].replace('-', ' ').toTitleCase();
         costs = apartment[i]['cost'];
-        if (costs.length != 0) {                
+        if (costs.length != 0) {
             total = 0
             for (let k = 0; k < costs.length; k++) {
                 total += costs[k];
             }
             cost = total / costs.length;
             cost = Math.round(cost);
-            knex('city_data').where({city: city}).update({        
+            knex('city_data').where({city: city}).update({
                 cost: cost
             }).then(result => {console.log('success')}, result => {console.log(result)});
         }
     }
-    /*
-    
-    for (let i = 0; i < career.length; i++) { 
-        
+
+    */
+    for (let i = 0; i < career.length; i++) {
+
         let job = career[i]['job'].replace('+', ' ').toTitleCase();
-        
-        
+
+
         let cities = {};
         while (i + 1 < career.length && job == career[i+1]['job'].replace('+', ' ').toTitleCase()){
             let list = []
             let salaries = career[i]['salary'];
             for (let j = 0; j < salaries.length; j++) {
                 for(let k = 0; k < salaries[j]['quantity']; k++){
-                    list.push(salaries[j]['salary']);                
+                    list.push(salaries[j]['salary']);
                 }
             }
             let entry_quant = ('entry' in career[i]['exp']) ? career[i]['exp']['entry'] : 0;
             let mid_quant = ('mid' in career[i]['exp']) ? career[i]['exp']['mid'] : 0;
-            let senior_quant = ('senior' in career[i]['exp']) ? career[i]['exp']['senior'] : 0;        
+            let senior_quant = ('senior' in career[i]['exp']) ? career[i]['exp']['senior'] : 0;
             let entry_salary = Quartile(list, 0.25);
             let mid_salary = Quartile(list, 0.5);
-            let senior_salary = Quartile(list, 0.9);        
-            cities[career[i]['city'][0].replace('+', ' ').toTitleCase()] = [entry_salary, mid_salary, senior_salary, entry_quant, mid_quant, senior_quant];   
-            i++;         
+            let senior_salary = Quartile(list, 0.9);
+            cities[career[i]['city'][0].replace('+', ' ').toTitleCase()] = [entry_salary, mid_salary, senior_salary, entry_quant, mid_quant, senior_quant];
+            i++;
         }
         let list = []
         let salaries = career[i]['salary'];
         for (let j = 0; j < salaries.length; j++) {
             for(let k = 0; k < salaries[j]['quantity']; k++){
-                list.push(salaries[j]['salary']);                
+                list.push(salaries[j]['salary']);
             }
         }
         let entry_quant = ('entry' in career[i]['exp']) ? career[i]['exp']['entry'] : 0;
         let mid_quant = ('mid' in career[i]['exp']) ? career[i]['exp']['mid'] : 0;
-        let senior_quant = ('senior' in career[i]['exp']) ? career[i]['exp']['senior'] : 0;     
+        let senior_quant = ('senior' in career[i]['exp']) ? career[i]['exp']['senior'] : 0;
         let entry_salary = Quartile(list, 0.25);
         let mid_salary = Quartile(list, 0.5);
-        let senior_salary = Quartile(list, 0.9);     
-        cities[career[i]['city'][0].replace('+', ' ').toTitleCase()] = [entry_salary, mid_salary, senior_salary, entry_quant, mid_quant, senior_quant];  
-        
+        let senior_salary = Quartile(list, 0.9);
+        cities[career[i]['city'][0].replace('+', ' ').toTitleCase()] = [entry_salary, mid_salary, senior_salary, entry_quant, mid_quant, senior_quant];
+
         knex('job_data').insert({
             job: job,
             cities: cities
@@ -161,13 +163,13 @@ function loadFromJSON() {
                 json = {...result[0]['cities'], ...cities};
                 knex('job_data').where({job: job}).update({cities: json}).then(result => {console.log('success')}, result => {console.log(result)});
             }, result => {console.log(result)});
-            
+
         });
     }
-    */
+
 }
 
-function getAll(res, city, job) {    
+function getAll(res, city, job) {
 
     console.log('replied');
     knex.raw("SELECT * FROM city_data ORDER BY SIMILARITY(METAPHONE(city,10), METAPHONE('" + city + "',10)) DESC LIMIT 1;").then(city_result => {
@@ -188,17 +190,17 @@ function getAll(res, city, job) {
                 senior_quant: job_result[5]
             }
             res.json(result);
-        }, result => { 
+        }, result => {
             console.log(result);
         });
-    }, result => { 
+    }, result => {
         console.log(city_result);
-    }); 
+    });
 }
 
 
-function getCity(res, city) {    
-    
+function getCity(res, city) {
+
     console.log('replied');
     knex.raw("SELECT * FROM city_data ORDER BY SIMILARITY(METAPHONE(city,10), METAPHONE('" + city + "',10)) DESC LIMIT 1;").then(city_result => {
         let city_name = city_result['rows'][0]['city'];
@@ -209,10 +211,10 @@ function getCity(res, city) {
         }
         console.log('replied');
         res.json(result);
-    }, result => { 
+    }, result => {
         res.json({success: false});
         console.log(city_result);
-    }); 
+    });
 }
 /*
 

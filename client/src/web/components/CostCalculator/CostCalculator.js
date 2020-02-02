@@ -13,6 +13,7 @@ class CostCalculator extends Component{
       tax:'',
       animate:'hidden',
       loading:false,
+      city:'',
     }
   }
 
@@ -22,6 +23,7 @@ class CostCalculator extends Component{
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
+        city: response.data.city,
         loading:false,
         tax: response.data.sales_tax,
         rent:response.data.cost
@@ -88,6 +90,7 @@ class CostCalculator extends Component{
       margin:'0',
       padding:'0',
       fontWeight:'300',
+      textAlign:'center',
     }
 
     if(this.state.loading) return <CircularProgress color="primary"/>
@@ -103,24 +106,37 @@ class CostCalculator extends Component{
     >
     <Card className="costs">
     <CardContent>
-    <Typography variant="h3" color="primary">
+    <Typography variant="h2" color="primary">
     <p style={paraStyles}>
     {this.props.city}
     </p>
     </Typography>
     <br/>
-    <CardContent className="entry">
+    <CardContent className="entryCost" justify="middle">
+    <Grid container justify="center">
     <TextField id="filled-basic"   InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter City" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+    </Grid>
     </CardContent>
     <br/>
+    <Grid container justify="center">
+    <motion.li variants={item}
+    animate={this.state.animate}>
+    <Typography variant="h5">
+    City:{'\t\t\t\t'}
+    {this.state.city} <br/>
+    </Typography>
+    </motion.li>
+    </Grid>
+
+    <Grid container justify="center">
     <motion.li variants={item}
     animate={this.state.animate}>
     <Typography variant="h5">
     Rent:{'\t\t\t\t'}
-    {this.state.rent}
+    {this.state.rent}<br/>
     </Typography>
-
     </motion.li>
+    <Grid container justify="center">
     <motion.li variants={item}
     animate={this.state.animate}>
     <Typography variant="h5">
@@ -128,6 +144,8 @@ class CostCalculator extends Component{
     {this.state.tax}
     </Typography>
     </motion.li>
+    </Grid>
+    </Grid>
   </CardContent>
     </Card>
 

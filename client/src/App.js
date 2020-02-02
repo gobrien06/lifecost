@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, Component} from 'react';
 import './App.css';
 import About from './web/components/About/About';
 import TopBar from './web/components/TopBar/TopBar';
@@ -7,39 +7,53 @@ import CostCalculator from './web/components/CostCalculator/CostCalculator';
 import MakeIt from './web/components/MakeIt/MakeIt';
 
 
-function App() {
-  const [city, setCity] = useState('Where do you want to go?');
-  const [career, setCareer] = useState('');
-
-  const styles={
-    width:'15%',
-    margin:'auto',
+class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      city:'Where do you want to go?',
+      career:'default career',
+    }
   }
 
 
-  function handleChange(newCity){
+  handleChange=(newCity)=>{
     console.log("inside parent handlechange with: " + newCity);
-    setCity(newCity);
+    this.setState({
+      city: newCity,
+    })
   }
 
-  function handleCareer(newCareer){
+   handleCareer=(newCareer)=>{
     console.log("inside parent handleCAREER with: " + newCareer);
-    setCareer(newCareer);
+      (async () => {
+        await this.setState({
+          career:newCareer,
+          });
+        console.log("career from inside the parent" + this.state.career);
+      })();
   }
 
-  return (
-    <Fragment>
-    <TopBar />
-    <CostCalculator changeProp={handleChange} city = {city} />
-    <br/>
-    <hr style={styles}/>
-    <About />
-    <hr style={styles}/>
-    <Salary city = {city} changeCareer={handleCareer} career={career}/>
-    <hr style={styles}/>
-    <MakeIt city={city} career={career}/>
-    </Fragment>
-  );
+  render(){
+    const styles={
+      width:'15%',
+      margin:'auto',
+    }
+
+    return (
+      <Fragment>
+      <TopBar />
+      <CostCalculator changeProp={this.handleChange} city = {this.state.city} />
+      <br/>
+      <hr style={styles}/>
+      <About />
+      <hr style={styles}/>
+      <Salary city = {this.state.city} changeCareer={(newcar)=>this.handleCareer(newcar)} career={this.state.career}/>
+      <hr style={styles}/>
+      <MakeIt city={this.state.city} career={this.state.career}/>
+      </Fragment>
+    );
+  }
 }
 
 

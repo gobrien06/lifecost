@@ -19,7 +19,7 @@ if(process.env.SSL_ON == 'true') {
     }
     if(!req.secure) {
       return res.redirect('https://' + req.hostname + req.url);
-    }  
+    }
     next();
   });
 }

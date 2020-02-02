@@ -13,7 +13,7 @@ function About(){
             <ul>We make moving easy.
               <li> -  Find out your estimated expenses</li>
               <li> -  Discover your potential salaries</li>
-              <li> -  See what real residents think</li>
+              <li> -  See future career growth</li>
             </ul>
         </Grid>
 

@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import {Grid, TextField, Typography, Button} from '@material-ui/core';
+import {Grid, TextField, Typography, Button, CardContent} from '@material-ui/core';
 import './Salary.css';
 import axios from 'axios';
 import {motion} from 'framer-motion';
@@ -26,6 +26,15 @@ export default class Salary extends Component{
   }
 
   getJob(){
+    if(!this.props.city){
+      this.setState({
+        loading:false,
+        senior:"Please retry again",
+        junior:"Please retry again",
+        average:"Please retry again",
+      })
+    }
+    console.log('career for req'+this.props.career);
     const url = '/'+this.props.city+'/' + this.props.career + '/all/';
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
@@ -45,13 +54,13 @@ export default class Salary extends Component{
   handleChange=(e)=>{
     e.preventDefault();
     console.log(e.target.value);
-
     this.setState({
       animate:"visible",
     });
     (async () => {
       await this.props.changeCareer(e.target.value);
       this.getJob();
+      console.log("new job: " + this.props.career);
     })();
 
   }
@@ -87,12 +96,16 @@ export default class Salary extends Component{
         return(
           <div className="salary">
           <Typography variant="h2" color="primary" align="center">
-          Anyjob, anywhere.
+          Any job, anywhere.
           </Typography>
           <br/>
           <br/>
           <Grid container justify="center">
+          <CardContent className="entry" justify="middle">
+          <Grid container justify="center">
           <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+          </Grid>
+          </CardContent>
           </Grid>
           <Grid container justify="center" className="bottom">
           <Button variant="contained" color="primary" className="bot" onClick={this.handleClick}>
@@ -106,12 +119,16 @@ export default class Salary extends Component{
         return(
           <div className="salary">
           <Typography variant="h2" color="primary" align="center">
-          Any job, anywhere.
+           <p>Any job, anywhere.</p>
           </Typography>
           <br/>
           <br/>
           <Grid container justify="center">
+          <CardContent className="entry" justify="middle">
+          <Grid container justify="center">
           <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+          </Grid>
+          </CardContent>
           </Grid>
           <Grid container justify="center" className="bottom">
           <br/><br/><br/><br/>

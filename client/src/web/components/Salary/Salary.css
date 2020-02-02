@@ -13,3 +13,10 @@
   line-height:5rem;
   margin-top:7%;
 }
+
+.entry{
+  background: linear-gradient(-45deg, #3f51b5, #3f51b5, #3949ab, #283593);
+  animation: gradient 15s ease infinite;
+  color:#FFF !important;
+  width:60%;
+}

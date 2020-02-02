@@ -10,47 +10,60 @@ class PieChart extends Component{
         {
           "id": "junior",
           "label": "junior",
-          "value": 20,
-          "color": "#3f51b5"
+          "value": 0,
       },
       {
           "id":"mid",
           "label": "mid",
-          "value": 50,
-          "color": "#ffeb3b",
+          "value": 0,
       },
       {
         "id": "senior",
         "label": "senior",
-        "value": 50,
-        "color": "#ffa726"
+        "value": 0,
       }
 
     ]
     }
   }
 
-  componentDidMount(){
-    this.getData();
+  componentWillReceiveProps(newProp){
+      this.setState({
+        career: newProp.career,
+      })
+      console.log("Received and used new props " + newProp.career);
+      this.getData();
   }
 
+
   getData(){
+    console.log("in the pie with: " + this.props.city + "and job: " + this.props.career);
+    if(!this.props.city || !this.props.career){
+      return;
+    }
     const url = '/'+this.props.city+ '/'+this.props.career+'/all/';
     axios.get('http://localhost:3001' + url)
     .then((response)=>{
       this.setState({
         data:[
           {
-            "value":response.data.junior_quant,
+            "id": "junior",
+            "label": "junior",
+            "value":Number(response.data.entry_quant),
           },
           {
-            "value":response.data.id_quant,
+            "id": "mid",
+            "label": "mid",
+            "value":Number(response.data.mid_quant),
           },
           {
-            "value":response.data.senior_quant,
+            "id": "senior",
+            "label": "senior",
+            "value":Number(response.data.senior_quant),
           }
         ]
       })
+      console.log(this.state.data);
     },
     (error)=>{
       console.log(error);
