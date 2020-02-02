@@ -50,7 +50,7 @@ export default class Salary extends Component{
       animate:"visible",
     });
     (async () => {
-      await this.props.handleCareer(e.target.value);
+      await this.props.changeCareer(e.target.value);
       this.getJob();
     })();
 
