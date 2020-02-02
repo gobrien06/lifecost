@@ -27,7 +27,7 @@ export default class Salary extends Component{
   }
 
   getJob(){
-    const url = '/'+this.props.city+'/' + '/'+this.state.career +'/' + '/all/';
+    const url = '/'+this.props.city+'/' + this.state.career + '/all/';
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
@@ -46,11 +46,12 @@ export default class Salary extends Component{
   handleChange=(e)=>{
     e.preventDefault();
     console.log(e.target.value);
+
     this.setState({
       career: e.target.value,
       animate:"visible",
     });
-    this.getJob();
+      this.getJob();
   }
 
   handleClick=(e)=>{
