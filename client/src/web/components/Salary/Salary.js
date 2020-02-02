@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import {Grid, TextField, Typography} from '@material-ui/core';
+import {Grid, TextField, Typography, CircularProgress} from '@material-ui/core';
 import './Salary.css';
 import axios from 'axios';
 import {motion} from 'framer-motion';
@@ -13,6 +13,7 @@ export default class Salary extends Component{
       junior:'No data found',
       average:'No data found',
       animate:'hidden',
+      loading:false,
     }
   }
 
@@ -30,6 +31,7 @@ export default class Salary extends Component{
     axios.get(process.env.REACT_APP_BASE_URL + url)
     .then((response)=>{
       this.setState({
+        loading:false,
         senior:response.senior_salary,
         junior:response.junior_salary,
         average:response.mid_salary,
@@ -74,42 +76,53 @@ export default class Salary extends Component{
         }
       };
 
-      return(
-        <div className="salary">
-        <Typography variant="h2" color="primary" align="center">
-        Anyjob, anywhere.
-        </Typography>
-        <br/>
-        <br/>
-        <Grid container justify="center">
-        <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
-        </Grid>
-        <Grid container justify="center" className="bottom">
-        <br/><br/><br/><br/>
-        <motion.ul
-        className="container"
-        variants={container}
-        initial="hidden"
-        animate={this.state.animate}
-        >
-        <motion.li
-        variants={item}
-        >
-        Junior:{'\t'}{this.state.junior}
-        </motion.li>
-        <motion.li
-        variants={item}
-        >
-        Mid:{'\t'}{this.state.average}
-        </motion.li>
-        <motion.li
-        variants={item}
-        >
-        Senior:{'\t'}{this.state.senior}
-        </motion.li>
-        </motion.ul>
-        </Grid>
-        </div>
-      )
+      if(this.state.loading){
+        return(
+          <CircularProgress color="primary" />
+        )
+      }
+      else{
+        return(
+          <div className="salary">
+          <Typography variant="h2" color="primary" align="center">
+          Anyjob, anywhere.
+          </Typography>
+          <br/>
+          <br/>
+          <Grid container justify="center">
+          <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+          </Grid>
+          <Grid container justify="center" className="bottom">
+          <br/><br/><br/><br/>
+          <motion.ul
+          className="container"
+          variants={container}
+          initial="hidden"
+          animate={this.state.animate}
+          >
+          <Typography variant="h4">
+
+          <motion.li
+          variants={item}
+          >
+          Junior:{'\t'}{this.state.junior}
+          </motion.li>
+          <motion.li
+          variants={item}
+          >
+          Mid:{'\t'}{this.state.average}
+          </motion.li>
+          <motion.li
+          variants={item}
+          >
+          Senior:{'\t'}{this.state.senior}
+          </motion.li>
+          </Typography>
+          </motion.ul>
+          </Grid>
+
+          </div>
+        )
+      }
   }
 }

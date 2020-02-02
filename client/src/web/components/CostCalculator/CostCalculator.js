@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TextField, Card,  CardContent, Typography} from '@material-ui/core';
+import {TextField, Card,  CardContent, Typography, CircularProgress, Grid} from '@material-ui/core';
 import './Bills/Bills.css';
 import {motion} from 'framer-motion';
 import './CostCalculator.css';
@@ -12,6 +12,7 @@ class CostCalculator extends Component{
       rent:'',
       tax:'',
       animate:'hidden',
+      loading:false,
     }
   }
 
@@ -20,6 +21,7 @@ class CostCalculator extends Component{
     axios.get(process.env.REACT_APP_BASE_URL + url)
     .then((response)=>{
       this.setState({
+        loading:false,
         tax: response.tax,
         rent:response.rent,
       })
@@ -85,8 +87,19 @@ class CostCalculator extends Component{
       fontWeight:'300',
     }
 
-
+    if(this.state.loading) return <CircularProgress color="primary"/>
     return(
+    <Grid container justify="left" className="containcost">
+    <br/><br/><br/>
+    <Grid item xs={7} className="text">
+      <Typography variant="h1" color="primary">
+      Let us search for you.
+      </Typography>
+      <Typography variant="h4" color="primary" className="sub">
+      We scrape the web and return only what's important.
+      </Typography>
+    </Grid>
+    <Grid item xs={5}>
     <motion.ul
     className="container"
     variants={container}
@@ -96,9 +109,9 @@ class CostCalculator extends Component{
     >
     <Card className="costs">
     <CardContent>
-    <Typography variant="h4" color="primary">
+    <Typography variant="h3" color="primary">
     <p style={paraStyles}>
-    {this.props.city}
+    "{this.props.city}"
     </p>
     </Typography>
     <br/>
@@ -121,15 +134,11 @@ class CostCalculator extends Component{
     {this.state.tax}
     </Typography>
     </motion.li>
-  <motion.li variants={item}
-  animate={this.state.animate}>
-  <Typography variant="h5">
-    Income Tax:
-  </Typography>
-  </motion.li>
   </CardContent>
     </Card>
     </motion.ul>
+    </Grid>
+    </Grid>
   )
   }
 }

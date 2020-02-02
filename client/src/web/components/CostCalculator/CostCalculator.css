@@ -1,15 +1,24 @@
 .costs{
 	background-color:#151515 !important;
-	width:75vh;
-	margin:auto;
 	color:#FFF !important;
 
 }
 
-.container{
-	padding:1%;
-}
+.containcost{
+	min-height:75vh;
 
+}
+.text{
+	padding:5%;
+}
+.container{
+	padding:5%;
+}
+.sub{
+	color:#FFF !important;
+	font-weight:300 !important;
+	margin-top:5% !important;
+}
 p{
 	color:#3f51b5 !important;
 }
@@ -39,10 +48,4 @@ p{
 
 .cityval{
   color:#3f51b5;
-}
-
-@media only screen and (max-width: 600px) {
-  .costs{
-		width:60vh;
-	}
 }

@@ -1,6 +1,6 @@
 .rotating{
-  min-width:30vh;
-  min-height:30vh;
+  min-width:35vh;
+  min-height:35vh;
   margin:auto;
   margin-top:3%;
   margin-left:15%;
@@ -22,7 +22,7 @@
 }
 
 .makeit{
-  height:65vh;
+  height:70vh;
   width:100%;
   padding:7%;
 }
