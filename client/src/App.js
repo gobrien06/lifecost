@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useCallback} from 'react';
+import React, {Fragment, useState} from 'react';
 import './App.css';
 import About from './web/components/About/About';
 import TopBar from './web/components/TopBar/TopBar';

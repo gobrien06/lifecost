@@ -2,14 +2,14 @@
   min-width:35vh;
   min-height:35vh;
   margin:auto;
-  margin-top:3%;
   margin-left:15%;
   animation: rotation 10s infinite linear;
 }
 
 .chart{
-  margin-top:10% !important;
+  padding:10% !important;
 }
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -25,7 +25,7 @@
 }
 
 .makeit{
-  height:72vh;
+  height:70vh;
   width:100%;
-  padding:7%;
+  padding:5%;
 }

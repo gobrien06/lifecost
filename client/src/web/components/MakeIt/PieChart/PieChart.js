@@ -17,7 +17,7 @@ class PieChart extends Component{
           "id":"mid",
           "label": "mid",
           "value": 50,
-          "color": "#ffeb3b"
+          "color": "#ffeb3b",
       },
       {
         "id": "senior",
@@ -31,7 +31,7 @@ class PieChart extends Component{
   }
 
   componentDidMount(){
-    //  this.getData();
+    this.getData();
   }
 
   getData(){
@@ -66,7 +66,7 @@ render(){
   padAngle={0.7}
   cornerRadius={3}
   borderWidth={1}
-  borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+  color={{"scheme":"purpleRed_green"}}
   radialLabelsSkipAngle={10}
   radialLabelsTextXOffset={6}
   radialLabelsTextColor="#FFF"
