@@ -42,7 +42,7 @@ class PieChart extends Component{
       return;
     }
     const url = '/'+this.props.city+ '/'+this.props.career+'/all/';
-    axios.get('http://localhost:3001' + url)
+    axios.get('http://localhost:80' + url)
     .then((response)=>{
       this.setState({
         data:[

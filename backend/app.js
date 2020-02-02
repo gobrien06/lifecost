@@ -24,7 +24,7 @@ if(process.env.SSL_ON == 'true') {
   });
 }
 app.use(cors());
-
+app.use(express.static('../client/build'));
 app.use(api);
 
 app.use(function(req, res, next) {

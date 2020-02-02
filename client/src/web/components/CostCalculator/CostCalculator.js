@@ -20,7 +20,7 @@ class CostCalculator extends Component{
   getData(){
     console.log("Getting data with" + this.props.city);
     const url = '/'+this.props.city+'/all/';
-    axios.get('http://localhost:3001'+ url)
+    axios.get('http://localhost:80'+ url)
     .then((response)=>{
       this.setState({
         city: response.data.city,
