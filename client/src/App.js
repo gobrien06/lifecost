@@ -9,6 +9,7 @@ import MakeIt from './web/components/MakeIt/MakeIt';
 
 function App() {
   const [city, setCity] = useState('Where do you want to go?');
+  const [career, setCareer] = useState('');
 
   const styles={
     width:'15%',
@@ -21,17 +22,22 @@ function App() {
     setCity(newCity);
   }
 
+  function handleCareer(newCareer){
+    console.log("inside parent handleCAREER with: " + newCareer);
+    setCareer(newCareer);
+  }
+
   return (
     <Fragment>
     <TopBar />
-    <CostCalculator changeProp={handleChange} city = {city}/>
+    <CostCalculator changeProp={handleChange} city = {city} />
     <br/>
     <hr style={styles}/>
     <About />
     <hr style={styles}/>
-    <Salary city = {city}/>
+    <Salary city = {city} changeCareer={handleCareer} career={career}/>
     <hr style={styles}/>
-    <MakeIt city={city}/>
+    <MakeIt city={city} career={career}/>
     </Fragment>
   );
 }

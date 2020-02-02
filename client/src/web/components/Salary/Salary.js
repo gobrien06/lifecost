@@ -8,7 +8,6 @@ export default class Salary extends Component{
   constructor(){
     super();
     this.state={
-      career:'Enter your career',
       senior:'No data found',
       junior:'No data found',
       average:'No data found',
@@ -27,7 +26,7 @@ export default class Salary extends Component{
   }
 
   getJob(){
-    const url = '/'+this.props.city+'/' + this.state.career + '/all/';
+    const url = '/'+this.props.city+'/' + this.props.career + '/all/';
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
@@ -48,10 +47,13 @@ export default class Salary extends Component{
     console.log(e.target.value);
 
     this.setState({
-      career: e.target.value,
       animate:"visible",
     });
+    (async () => {
+      await this.props.handleCareer(e.target.value);
       this.getJob();
+    })();
+
   }
 
   handleClick=(e)=>{
