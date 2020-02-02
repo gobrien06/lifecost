@@ -8,6 +8,7 @@ export default class Salary extends Component{
   constructor(){
     super();
     this.state={
+      job:'No data found',
       senior:'No data found',
       junior:'No data found',
       average:'No data found',
@@ -42,8 +43,10 @@ export default class Salary extends Component{
     const url = '/'+this.props.city+'/' + this.props.career + '/all/';
     axios.get('http://localhost:80'+ url)
     .then((response)=>{
+      console.log(response);
       this.setState({
         loading:false,
+        job:response.data.job,
         senior:response.data.senior_salary,
         junior:response.data.entry_salary,
         average:response.data.mid_salary,
@@ -143,6 +146,11 @@ export default class Salary extends Component{
           animate={this.state.animate}
           >
           <Typography variant="h4">
+          <motion.li
+          variants={item}
+          >
+          Job Title:{'\t'}{this.state.job}
+          </motion.li>
           <motion.li
           variants={item}
           >

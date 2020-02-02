@@ -179,6 +179,7 @@ function getAll(res, city, job) {
             job_result = result['rows'][0]['cities'][city_name];
             result = {
                 city: city_name,
+                job: result['rows'][0]['job'],
                 sales_tax: city_result['rows'][0]['sales_tax'],
                 cost: city_result['rows'][0]['cost'],
                 sentiment: city_result['rows'][0]['sentiment'],
