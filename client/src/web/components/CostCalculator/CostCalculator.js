@@ -44,7 +44,12 @@ class CostCalculator extends Component{
       e.preventDefault();
       this.handleChange(e);
       console.log("pressed");
-      this.getData();
+      if(this.props.city === "Where do you want to go?"){
+        console.log("being bad");
+      }
+      else{
+        this.getData();
+      }
     }
     }
 
@@ -53,7 +58,6 @@ class CostCalculator extends Component{
       console.log(e.target.value);
       this.props.change(e.target.value);
       this.setState({
-        city:e.target.value,
         animate:"visible",
       });
     };
