@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useCallback} from 'react';
 import './App.css';
 import About from './web/components/About/About';
 import TopBar from './web/components/TopBar/TopBar';
@@ -8,17 +8,21 @@ import MakeIt from './web/components/MakeIt/MakeIt';
 
 
 function App() {
-  const [city, setCity] = useState('Where do you want to go?');
+  const [city, setCity] = useState('');
 
   const styles={
     width:'15%',
     margin:'auto',
   }
 
+  function handleChange(newCity){
+    setCity(newCity);
+  }
+
   return (
     <Fragment>
     <TopBar />
-    <CostCalculator change={setCity} city = {city}/>
+    <CostCalculator changeProp={handleChange} city = {city}/>
     <br/>
     <hr style={styles}/>
     <About />

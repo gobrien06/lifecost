@@ -6,8 +6,8 @@ import './CostCalculator.css';
 import axios from 'axios';
 
 class CostCalculator extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       rent:'',
       tax:'',
@@ -41,24 +41,16 @@ class CostCalculator extends Component{
         animate:'hidden',
       })
     if (e.key === 'Enter') {
-      e.preventDefault();
       this.handleChange(e);
       console.log("pressed");
-      if(this.props.city === "Where do you want to go?"){
-        console.log("being bad");
-      }
-      else{
-        this.getData();
-      }
+      this.getData();
     }
     }
 
     handleChange = (e) => {
       e.preventDefault();
       console.log(e.target.value);
-      this.props.change(e.target.value);
-      let citi=this.props.city;
-      console.log("props:"+citi);
+      this.props.changeProp(e.target.value);
       this.setState({
         animate:"visible",
       });
