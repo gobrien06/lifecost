@@ -13,11 +13,12 @@ class CostCalculator extends Component{
       tax:'',
       animate:'hidden',
       loading:false,
+      city:'',
     }
   }
 
   getData(){
-    const url = '/'+this.props.city+'/all/';
+    const url = '/'+this.state.city+'/all/';
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
@@ -52,6 +53,7 @@ class CostCalculator extends Component{
       console.log(e.target.value);
       this.props.changeProp(e.target.value);
       this.setState({
+        city:e.target.value,
         animate:"visible",
       });
     };
