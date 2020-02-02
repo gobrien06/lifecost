@@ -37,11 +37,11 @@ class CostCalculator extends Component{
   }
 
     handleKeyPress=(e)=>{
-      e.preventDefault();
       this.setState({
         animate:'hidden',
       })
     if (e.key === 'Enter') {
+      e.preventDefault();
       this.handleChange(e);
       console.log("pressed");
       this.getData();
