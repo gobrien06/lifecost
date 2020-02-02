@@ -100,7 +100,7 @@ class CostCalculator extends Component{
     >
     <Card className="costs">
     <CardContent>
-    <Typography variant="h4" color="primary">
+    <Typography variant="h3" color="primary">
     <p style={paraStyles}>
     {this.props.city}
     </p>

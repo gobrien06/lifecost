@@ -8,13 +8,13 @@ function MakeIt(){
     <Grid container className="makeit" position="relative">
       <Grid item xs={8}>
         <Typography variant="h2" color="primary">
-        Don't break it, make it.
+        Rise to the top.
         </Typography>
       </Grid>
       <Grid item xs={4}>
       <Box height={250}/>
       <Typography variant="h4" className="right">
-        See your salary before you get the job.
+        See the distrubution of jobs amongst senior, junior, and mid-level positions.
       </Typography>
       </Grid>
     </Grid>

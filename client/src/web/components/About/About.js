@@ -36,7 +36,7 @@ const Cone = (props) => {
 function About(){
     return(
       <Grid container className="about">
-        <Grid item xs={8}>
+        <Grid item xs={7}>
         <Typography variant="h2" color="primary"> What we do. </Typography>
             <ul>We make moving easy.
               <li> -  Find out your estimated expenses</li>
@@ -45,78 +45,26 @@ function About(){
             </ul>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={5}>
         <Particles
           params={{
-            "particles": {
-            "number": {
-                "value": 400,
-                "density": {
-                    "enable": true,
-                    "value_area": 1803.4120608655228
+              "particles": {
+                  "number": {
+                      "value": 35
+                  },
+                  "size": {
+                      "value": 5
+                  }
+              },
+              "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                  }
                 }
-            },
-            "color": {
-                "value": "#ffffff"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 20,
-                    "color": "#000000"
-                },
-                "polygon": {
-                    "nb_sides": 4
-                },
-                "image": {
-                    "src": "img/github.svg",
-                    "width": 200,
-                    "height": 200
-                }
-            },
-            "opacity": {
-                "value": 0.4008530152163807,
-                "random": false,
-                "anim": {
-                    "enable": false,
-                    "speed": 2,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 1.5,
-                "random": true,
-                "anim": {
-                    "enable": false,
-                    "speed": 80,
-                    "size_min": 0.5,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 0,
-                "color": "#ffffff",
-                "opacity": 0.3687847739990702,
-                "width": 0.6413648243462091
-            },
-            "move": {
-                "enable": true,
-                "speed": 20,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-              }
-        },
-        "retina_detect": true
+
     }} />
               }
             }
