@@ -23,8 +23,8 @@ class CostCalculator extends Component{
     .then((response)=>{
       this.setState({
         loading:false,
-        tax: response.sales_tax,
-        rent:response.cost,
+        tax: response.data.sales_tax,
+        rent:response.data.cost
       })
     },
     (error)=>{

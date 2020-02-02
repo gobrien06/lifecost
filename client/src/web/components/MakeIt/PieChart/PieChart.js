@@ -41,13 +41,13 @@ class PieChart extends Component{
       this.setState({
         data:[
           {
-            "value":response.junior_quant,
+            "value":response.data.junior_quant,
           },
           {
-            "value":response.mid_quant,
+            "value":response.data.id_quant,
           },
           {
-            "value":response.senior_quant,
+            "value":response.data.senior_quant,
           }
         ]
       })
