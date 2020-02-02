@@ -17,6 +17,7 @@ function App() {
 
 
   function handleChange(newCity){
+    console.log("inside parent handlechange with: " + newCity);
     setCity(newCity);
   }
 

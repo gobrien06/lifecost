@@ -13,12 +13,12 @@ class CostCalculator extends Component{
       tax:'',
       animate:'hidden',
       loading:false,
-      city:'',
     }
   }
 
   getData(){
-    const url = '/'+this.state.city+'/all/';
+    console.log("Getting data with" + this.props.city);
+    const url = '/'+this.props.city+'/all/';
     axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
@@ -44,18 +44,20 @@ class CostCalculator extends Component{
     if (e.key === 'Enter') {
       this.handleChange(e);
       console.log("pressed");
-      this.getData();
     }
     }
 
     handleChange = (e) => {
       e.preventDefault();
       console.log(e.target.value);
-      this.props.changeProp(e.target.value);
+      console.log("props"+this.props.city);
       this.setState({
-        city:e.target.value,
         animate:"visible",
       });
+      (async () => {
+        await this.props.changeProp(e.target.value);
+        this.getData()
+      })();
     };
 
 
