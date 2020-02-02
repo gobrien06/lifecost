@@ -9,7 +9,7 @@ import Opinion from './web/components/Opinion/Opinion';
 
 
 function App() {
-  const [city, setCity] = useState('Enter Your City');
+  const [city, setCity] = useState('Where do you want to go?');
 
   const styles={
     width:'15%',

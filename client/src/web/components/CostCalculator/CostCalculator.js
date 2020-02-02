@@ -89,17 +89,8 @@ class CostCalculator extends Component{
 
     if(this.state.loading) return <CircularProgress color="primary"/>
     return(
-    <Grid container justify="left" className="containcost">
-    <br/><br/><br/>
-    <Grid item xs={7} className="text">
-      <Typography variant="h1" color="primary">
-      Let us search for you.
-      </Typography>
-      <Typography variant="h4" color="primary" className="sub">
-      We scrape the web and return only what's important.
-      </Typography>
-    </Grid>
-    <Grid item xs={5}>
+    <div>
+    <Grid container justify="center">
     <motion.ul
     className="container"
     variants={container}
@@ -109,9 +100,9 @@ class CostCalculator extends Component{
     >
     <Card className="costs">
     <CardContent>
-    <Typography variant="h3" color="primary">
+    <Typography variant="h4" color="primary">
     <p style={paraStyles}>
-    "{this.props.city}"
+    {this.props.city}
     </p>
     </Typography>
     <br/>
@@ -120,7 +111,7 @@ class CostCalculator extends Component{
     </CardContent>
     <br/>
     <motion.li variants={item}
-    animate={this.state.animate}  >
+    animate={this.state.animate}>
     <Typography variant="h5">
     Rent:{'\t\t\t\t'}
     {this.state.rent}
@@ -136,9 +127,17 @@ class CostCalculator extends Component{
     </motion.li>
   </CardContent>
     </Card>
+
+    <motion.li variants={item}
+    animate={this.state.animate} >
+    <Typography variant="h3" className="bot">
+    We scrape the web so you don't have to.
+    </Typography>
+    </motion.li>
     </motion.ul>
+
     </Grid>
-    </Grid>
+    </div>
   )
   }
 }

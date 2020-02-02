@@ -101,7 +101,6 @@ export default class Salary extends Component{
           animate={this.state.animate}
           >
           <Typography variant="h4">
-
           <motion.li
           variants={item}
           >
