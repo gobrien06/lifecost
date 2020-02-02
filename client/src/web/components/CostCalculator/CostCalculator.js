@@ -57,6 +57,8 @@ class CostCalculator extends Component{
       e.preventDefault();
       console.log(e.target.value);
       this.props.change(e.target.value);
+      let citi=this.props.city;
+      console.log("props:"+citi);
       this.setState({
         animate:"visible",
       });
