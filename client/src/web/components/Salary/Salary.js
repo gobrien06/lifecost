@@ -33,7 +33,7 @@ export default class Salary extends Component{
       this.setState({
         loading:false,
         senior:response.data.senior_salary,
-        junior:response.data.junior_salary,
+        junior:response.data.entry_salary,
         average:response.data.mid_salary,
       })
     },

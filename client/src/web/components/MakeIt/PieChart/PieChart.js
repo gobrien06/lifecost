@@ -77,7 +77,6 @@ render(){
   radialLabelsLinkColor={{ from: 'color' }}
   slicesLabelsSkipAngle={10}
   slicesLabelsTextColor="#000"
-  animate={true}
   motionStiffness={90}
         motionDamping={15}
         defs={[
