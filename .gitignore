@@ -1,3 +1,5 @@
 /jsonexamples/
-/client/node_modules/
+*/node_modules/
 build/
+__pycache__/
+*.json
