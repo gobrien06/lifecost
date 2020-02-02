@@ -22,8 +22,8 @@ class CostCalculator extends Component{
     .then((response)=>{
       this.setState({
         loading:false,
-        tax: response.tax,
-        rent:response.rent,
+        tax: response.sales_tax,
+        rent:response.cost,
       })
     },
     (error)=>{
@@ -92,7 +92,7 @@ class CostCalculator extends Component{
     <div>
     <Grid container justify="center">
     <motion.ul
-    className="container"
+    className="ccontainer"
     variants={container}
     initial="hidden"
     animate="visible"
@@ -128,12 +128,9 @@ class CostCalculator extends Component{
   </CardContent>
     </Card>
 
-    <motion.li variants={item}
-    animate={this.state.animate} >
     <Typography variant="h3" className="bot">
     We scrape the web so you don't have to.
     </Typography>
-    </motion.li>
     </motion.ul>
 
     </Grid>

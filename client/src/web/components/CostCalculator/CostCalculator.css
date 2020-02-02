@@ -1,15 +1,15 @@
 .costs{
-	background-color:#151515 !important;
+	background-color:#111111 !important;
 	color:#FFF !important;
 
 }
 .text{
 	padding:5%;
 }
-.container{
+.ccontainer{
 	padding:5%;
 	height:60vh;
-	width:50%;
+	width:60%;
 }
 .sub{
 	color:#FFF !important;
@@ -44,7 +44,7 @@ p{
 }
 
 .enterfield{
-	background-color:#151515;
+	background-color:#111111;
 	color:#FFF !important;
 }
 

@@ -27,7 +27,6 @@ function App() {
     <Salary city = {city}/>
     <hr style={styles}/>
     <MakeIt />
-    <Opinion city={city}/>
     </Fragment>
   );
 }

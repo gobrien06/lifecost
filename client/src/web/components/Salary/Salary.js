@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import {Grid, TextField, Typography, CircularProgress} from '@material-ui/core';
+import {Grid, TextField, Typography, Button} from '@material-ui/core';
 import './Salary.css';
 import axios from 'axios';
 import {motion} from 'framer-motion';
@@ -53,6 +53,10 @@ export default class Salary extends Component{
     this.getJob();
   }
 
+  handleClick=(e)=>{
+    window.scrollTo({top: 0, behavior: 'smooth' });
+  }
+
 
   render(){
       const container = {
@@ -76,9 +80,23 @@ export default class Salary extends Component{
         }
       };
 
-      if(this.state.loading){
+      if(this.props.city === 'Where do you want to go?'){
         return(
-          <CircularProgress color="primary" />
+          <div className="salary">
+          <Typography variant="h2" color="primary" align="center">
+          Anyjob, anywhere.
+          </Typography>
+          <br/>
+          <br/>
+          <Grid container justify="center">
+          <TextField id="filled-basic" InputProps={{style:{color:"#FFF"}}} InputLabelProps={{ style: { color: '#fff' },}}  label="Enter Job" variant="filled" className="enterfield" onKeyDown={this.handleKeyPress}/>
+          </Grid>
+          <Grid container justify="center" className="bottom">
+          <Button variant="contained" color="primary" className="bot" onClick={this.handleClick}>
+          Enter City
+          </Button>
+          </Grid>
+          </div>
         )
       }
       else{

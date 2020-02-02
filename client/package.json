@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
+    "@nivo/pie": "^0.61.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -12,6 +13,7 @@
     "framer-motion": "^1.8.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-particles-js": "^2.7.0",
     "react-scripts": "3.3.0",
     "react-three-fiber": "^4.0.12",
     "three": "^0.112.1",
