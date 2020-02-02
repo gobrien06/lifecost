@@ -18,7 +18,7 @@ class CostCalculator extends Component{
 
   getData(){
     const url = '/'+this.props.city+'/all/';
-    axios.get(process.env.REACT_APP_BASE_URL + url)
+    axios.get('http://localhost:3001'+ url)
     .then((response)=>{
       this.setState({
         loading:false,

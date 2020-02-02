@@ -21,7 +21,7 @@ class Opinion extends Component{
 
   getOpinion(){
     const url = '/'+this.props.city+'/' + '/'+this.state.career +'/' + '/all/';
-    axios.get(process.env.REACT_APP_BASE_URL + url)
+    axios.get('http://localhost:3001' + url)
     .then((response)=>{
       this.setState({
         opinion:response.opinion,
