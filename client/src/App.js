@@ -11,7 +11,7 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      city:'Where do you want to go?',
+      city:'Just say where to go.',
       career:'default career',
     }
   }
@@ -43,10 +43,10 @@ class App extends Component {
     return (
       <Fragment>
       <TopBar />
-      <CostCalculator changeProp={this.handleChange} city = {this.state.city} />
+      <About />
       <br/>
       <hr style={styles}/>
-      <About />
+      <CostCalculator changeProp={this.handleChange} city = {this.state.city} />
       <hr style={styles}/>
       <Salary city = {this.state.city} changeCareer={(newcar)=>this.handleCareer(newcar)} career={this.state.career}/>
       <hr style={styles}/>
