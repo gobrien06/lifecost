@@ -31,13 +31,11 @@ class PieChart extends Component{
       this.setState({
         career: newProp.career,
       })
-      console.log("Received and used new props " + newProp.career);
       this.getData();
   }
 
 
   getData(){
-    console.log("in the pie with: " + this.props.city + "and job: " + this.props.career);
     if(!this.props.city || !this.props.career){
       return;
     }
@@ -63,7 +61,7 @@ class PieChart extends Component{
           }
         ]
       })
-      console.log(this.state.data);
+
     },
     (error)=>{
       console.log(error);

@@ -18,19 +18,16 @@ class App extends Component {
 
 
   handleChange=(newCity)=>{
-    console.log("inside parent handlechange with: " + newCity);
     this.setState({
       city: newCity,
     })
   }
 
    handleCareer=(newCareer)=>{
-    console.log("inside parent handleCAREER with: " + newCareer);
       (async () => {
         await this.setState({
           career:newCareer,
           });
-        console.log("career from inside the parent" + this.state.career);
       })();
   }
 
@@ -48,6 +45,7 @@ class App extends Component {
       <hr style={styles}/>
       <CostCalculator changeProp={this.handleChange} city = {this.state.city} />
       <hr style={styles}/>
+      <br/><br/>
       <Salary city = {this.state.city} changeCareer={(newcar)=>this.handleCareer(newcar)} career={this.state.career}/>
       <hr style={styles}/>
       <MakeIt city={this.state.city} career={this.state.career}/>

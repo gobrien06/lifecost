@@ -39,11 +39,9 @@ export default class Salary extends Component{
         animate:'hidden',
       })
     }
-    console.log('career for req'+this.props.career);
     const url = '/'+this.props.city+'/' + this.props.career + '/all/';
     axios.get('http://localhost:80'+ url)
     .then((response)=>{
-      console.log(response);
       this.setState({
         loading:false,
         job:response.data.job,
@@ -60,20 +58,19 @@ export default class Salary extends Component{
 
   handleChange=(e)=>{
     e.preventDefault();
-    console.log(e.target.value);
     this.setState({
       animate:"visible",
     });
     (async () => {
       await this.props.changeCareer(e.target.value);
       this.getJob();
-      console.log("new job: " + this.props.career);
     })();
 
   }
 
+  //need to change
   handleClick=(e)=>{
-    window.scrollTo({top: 0, behavior: 'smooth' });
+    window.scrollTo(0,this.refs.costs);
   }
 
 
@@ -99,7 +96,7 @@ export default class Salary extends Component{
         }
       };
 
-      if(this.props.city === 'Where do you want to go?'){
+      if(this.props.city === 'Just say where to go.'){
         return(
           <div className="salary">
           <Typography variant="h2" color="primary" align="center">

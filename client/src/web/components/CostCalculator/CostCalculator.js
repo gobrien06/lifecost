@@ -18,7 +18,6 @@ class CostCalculator extends Component{
   }
 
   getData(){
-    console.log("Getting data with" + this.props.city);
     const url = '/'+this.props.city+'/all/';
     axios.get('http://localhost:80'+ url)
     .then((response)=>{
@@ -30,7 +29,6 @@ class CostCalculator extends Component{
       })
     },
     (error)=>{
-      console.log(error);
       this.setState({
         tax: 'No data found',
         rent: 'No data found',
@@ -45,14 +43,11 @@ class CostCalculator extends Component{
       })
     if (e.key === 'Enter') {
       this.handleChange(e);
-      console.log("pressed");
     }
     }
 
     handleChange = (e) => {
       e.preventDefault();
-      console.log(e.target.value);
-      console.log("props"+this.props.city);
       this.setState({
         animate:"visible",
       });

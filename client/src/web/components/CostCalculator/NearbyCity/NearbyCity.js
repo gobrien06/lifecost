@@ -23,13 +23,11 @@ export default class  NearbyCity extends Component{
   handleKeyPress=(e)=>{
       if (e.key === 'Enter') {
         this.handleChange(e);
-        console.log("pressed");
       }
   }
 
   handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     this.props.update(e.target.value);
   };
 
