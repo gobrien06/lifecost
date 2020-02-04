@@ -5,7 +5,7 @@ import json
 
 class apartmentSpider(scrapy.Spider):
     name = "apartmentSpider"
-    #download_delay = 1
+    download_delay = 1
     
     headers = {
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -52,22 +52,22 @@ class apartmentSpider(scrapy.Spider):
         #Check if no listings
         if response.xpath('''//p[@id='nearby-listings-geo']''').get() or response.xpath('''//article[@id='noPlacards']''').get():
             return
-            
-        prices = response.xpath('''//span[@class='altRentDisplay']/text()''').getall()
-        prices = [price.replace(',', '') for price in prices]
+        
+        #Get all price elements
+        elements = response.xpath('''//span[@class='altRentDisplay']/text()''').getall()
+        elements = [element.replace(',', '') for element in elements]
 
-        for i in range(0, len(prices)):
-            if '-' in prices[i]:
-                prices[i] = prices[i].split('-')
-                prices[i] = (int(prices[i][0].strip().replace('$', '')) + int(prices[i][1].strip())) / 2
+        prices = []
+        #Max 2 prices so strip for two or one
+        for i in range(0, len(elements)):
+            if '-' in elements[i]:
+                element = elements[i].split('-')
+                prices.append(int(element[0].strip().replace('$', ''))) 
+                prices.append(int(prices[1].strip()))
             elif '$' in prices[i]:
-                prices[i] = int(prices[i].replace('$', ''))
-            else:
-                prices[i] = ''
-        prices = [price for price in prices if price != '']       
-        
-
-        
+                prices.append(int(elements[i].replace('$', '')))
+                        
+                        
         yield {
             'city': response.meta['city'],
             'cost': prices
